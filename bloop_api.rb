@@ -49,30 +49,30 @@ class BloopApi
 
   def rhythms
     [
-      # "A d6 d6 d6 B d6 d6 d6 A d6 d6 d6 sB d6 d6 d6",
-      # "4   c6 4  b5 4  4  e4 4   c6 4  b5 4  4  e4",
-      # "4 4a2 4 4a2 4 4a2 4 8a2 8a2",
-      "4a2 4 4 4a2 4 4 4a2 4 4 4a2 4 4 "
-      # "8 4a1 8a 8a 4a 4a 4c2 9c 7c 4c 8e",
-      # "8 4g2 8g 8 4g 4g 4d2 8 8c3 4b2 8e",
-      # "8 4d2 8c 8c 4c 4 4a2 9a 7a 4a 8a",
-      # "8 4g2 8g 8 4g 4d 4d2 9e3 7c2 8 4b1",
+      "A d6 d6 d6 B d6 d6 d6 A d6 d6 d6 sB d6 d6 d6",
+      "4   c6 4  b5 4  4  e4 4   c6 4  b5 4  4  e4",
+      "4 4a2 4 4a2 4 4a2 4 8a2 8a2",
+      "4a2 4 4 4a2 4 4 4a2 4 4 4a2 4 4 ",
+      "8 4a1 8a 8a 4a 4a 4c2 9c 7c 4c 8e",
+      "8 4g2 8g 8 4g 4g 4d2 8 8c3 4b2 8e",
+      "8 4d2 8c 8c 4c 4 4a2 9a 7a 4a 8a",
+      "8 4g2 8g 8 4g 4d 4d2 9e3 7c2 8 4b1",
     ]
   end
 
   def melodies
     [
       " 32 + C E F# 8:A G E C - 8:A 8:F# 8:F# 8:F# 2:G",
-    # "f#5 c6 e4 b6 g5 d6 4  f#5 e5 c5 b6 c6 d6 4 ",
-    # "1a2 2a3 2 1d2 4g3 4g2 2e3",
-    # "1a2 2a3 2 1g2 2d3 2",
-    # "2g3 1a4 2",
-    # "2c5 1e4 2 1",
-    # "1a4 2 4 2e4 1d4 2",
-    # "2a3 1b4 2",
-    # "2d5 2g4 1c5",
-    # "1a4 1e5",
-    # "1b4 2 4 8 8d4     ",
+    "f#5 c6 e4 b6 g5 d6 4  f#5 e5 c5 b6 c6 d6 4 ",
+    "1a2 2a3 2 1d2 4g3 4g2 2e3",
+    "1a2 2a3 2 1g2 2d3 2",
+    "2g3 1a4 2 2g3 1a4 2",
+    "2c5 1e4 2 1 2c5 1e4 2 1",
+    "1a4 2 4 2e4 1d4 2",
+    "2a3 1b4 2 2a3 1b4 2",
+    "2d5 2g4 1c5 2d5 2g4 1c5",
+    "1a4 1e5 1a4 1e5",
+    "1b4 2 4 8 8d4 1b4 2 4 8 8d4 1b4 2 4 8 8d4    ",
 
     ]
   end

@@ -29,7 +29,7 @@ the number of instruments concurrently playing for that bar.
 
 For each instrument, a random sound is chosen and paired with a random melody / rhythm.
 
-### `parallel_chiptune`
+### `parallel_chiptune(thread_count)`
 
 This uses the [parallel](https://github.com/grosser/parallel) ruby gem to run the
 `play_chiptune` command multiple times in parallel.
