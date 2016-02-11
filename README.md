@@ -1,7 +1,9 @@
 An interactive CLI for using [bloopsaphone](https://github.com/mental/bloopsaphone),
 a chiptune sound creator for Ruby.
 
-Bloopsaphone can be hard to install, I had to install a sequence of 3 dependencies
+Look in the `ruby-cli-skeleton` file for the Gemfile used for this app.
+
+The `bloopsaphone` gem can be hard to install, I had to install a sequence of 3 dependencies
 I think. Just google the errors. 
 
 This uses my [ruby-cli-skeleton](http://github.com/maxpleaner/ruby-cli-skeleton)
