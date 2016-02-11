@@ -8,9 +8,9 @@ class Commands
   end
   def play_chiptune
     BloopApi.flow(
-      length: 4,
-      intensity_max: 10,
-      intensity_min: 5
+      length: 8,
+      intensity_max: 1,
+      intensity_min: 1
     )
   end
   def parallel_chiptune(count)

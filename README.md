@@ -32,7 +32,7 @@ For each instrument, a random sound is chosen and paired with a random melody / 
 ### `parallel_chiptune`
 
 This uses the [parallel](https://github.com/grosser/parallel) ruby gem to run the
-`play_chiptune` command multiple times in succession.
+`play_chiptune` command multiple times in parallel.
 
 The 'intensity' options in `BloopApi.flow` also plays parallel sounds.
 
