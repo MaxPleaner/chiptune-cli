@@ -1,4 +1,4 @@
-require 'bloops'
+require 'bloops' # the bloops o' phone
 require 'active_support/inflector'
 require 'byebug'
 
@@ -7,9 +7,7 @@ class BloopApi
   def initialize(options={})
     options = {
       tempo: 320,
-      sounds: {},
     }.merge(options)
-    # the bloops o' phone
     @bloops = Bloops.new
     @bloops.tempo = options[:tempo]
   end
@@ -51,7 +49,7 @@ class BloopApi
 
   def rhythms
     [
-      "A d6 d6 d6 B d6 d6 d6 A d6 d6 d6 B d6 d6 d6",
+      "A d6 d6 d6 B d6 d6 d6 A d6 d6 d6 sB d6 d6 d6",
       "4   c6 4  b5 4  4  e4 4   c6 4  b5 4  4  e4",
       "4 4a2 4 4a2 4 4a2 4 8a2 8a2",
       "8 4a1 8a 8a 4a 4a 4c2 9c 7c 4c 8e",
