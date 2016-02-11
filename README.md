@@ -10,12 +10,33 @@ This uses my [ruby-cli-skeleton](http://github.com/maxpleaner/ruby-cli-skeleton)
 template for a REPL / CLI.
 
 The chiptune-related CLI commands are in `cli_commands.rb`.
-At present there is only one command here, it is `play_chiptune`
-and it plays randomly-generated chiptune music for 16 bars. 
-It calls `BloopApi.flow` with a few options. `length` is the number of bars to play,
-and `intensity_max` and `intensity_min` are used to control the number of
-instruments playing concurrently. In `flow`, a random number between the intensity
-bounds is used to determine the number of instruments concurrently playing for that bar.
+At present there are tw command here, `play_chiptune` and `parallel_chiptune`.
+
+They play randomly-generated chiptune music for a few bars.
+
+### `play_chiptune`
+
+This produces a call `BloopApi.flow`.
+
+`BloopApi.flow` lives in `bloop_api.rb`. The `flow` method takes a few options"
+
+- `length` is the number of bars to play,
+- `intensity_max` and `intensity_min` are used to control the number of
+instruments playing concurrently.
+
+A random number between the intensity bounds is used to determine
+the number of instruments concurrently playing for that bar.
+
 For each instrument, a random sound is chosen and paired with a random melody / rhythm.
 
-See `bloop_api.rb` for the bloop API helpers.
+### `parallel_chiptune`
+
+This uses the [parallel](https://github.com/grosser/parallel) ruby gem to run the
+`play_chiptune` command multiple times in succession.
+
+The 'intensity' options in `BloopApi.flow` also plays parallel sounds.
+
+This is just experiments in how to get the best performance.
+
+There are limits on the number of parallel threads. When 'intensity' is high,
+fewer `parallel` threads can be used.

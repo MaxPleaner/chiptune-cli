@@ -20,3 +20,4 @@ source "http://rubygems.org"
   gem 'bloopsaphone'
   gem "activesupport"
   gem "byebug"
+  gem "parallel"
