@@ -40,3 +40,24 @@ This is just experiments in how to get the best performance.
 
 There are limits on the number of parallel threads. When 'intensity' is high,
 fewer `parallel` threads can be used.
+
+
+## Newly added methods
+
+### `polyrhythm`
+ 
+  - plays you a polyrhythmic beat,
+  - one of (3, 5, 7, 9) played over 32
+  - i.e.  (5*6) + 2 == 32
+  - so the 5/32 beat would have 6 bars of 5 plus one
+    of 2 to finish it off
+  - this sequence plays 4 times
+
+### `sick beat`
+
+  - a kind of abandoned attempt to make 'hip hop'.
+  - currently it does play a beat.
+
+### `parallel_sick_beat`
+
+  - takes an option (count) for the number of threads. 

@@ -59,28 +59,28 @@ class BloopApi
     num_beats = num_beats.to_s
     riffs = {
       "2" => [
-       "- - 16A 16" 
+       " #{"-" * (rand(3) + 1)} 16A 16" 
       ],
       "4" => [
-        "- - 16A 16 + 16C - 16"
+        " #{"-" * (rand(3) + 1)} 16A 16 + 16C - 16"
       ],
       "3" => [
-        "- - 16A 16A + 16C",
+        " #{"-" * (rand(3) + 1)} 16A 16A + 16C",
       ],
       "5" => [
-        "- - 16A 16 16A 16 16",
+        " #{"-" * (rand(3) + 1)} 16A 16 16A 16 16",
       ],
       "6" => [
-        "- - 16A 16A + 16C - 16A 16A + 16C"
+        " #{"-" * (rand(3) + 1)} 16A 16A + 16C - 16A 16A + 16C"
       ],
       "7" => [
-        "- - 16A 16 16A 16 + 16C - 16 16",
+        " #{"-" * (rand(3) + 1)} 16A 16 16A 16 + 16C - 16 16",
       ],
       "8" => [
         "16A 16C 16C 16C 16C 16C 16C 16C"
       ],
       "9" => [
-        "- - 16A 16 16 16A 16 16 16A 16A 16A",
+        " #{"-" * (rand(3) + 1)} 16A 16 16 16A 16 16 16A 16A 16A",
 
       ]
     }
@@ -93,28 +93,28 @@ class BloopApi
     num_beats = num_beats.to_s
     riffs = {
       "2" => [
-       "- 16A 16" 
+       " #{"-" * (rand(3) + 1)} 16A 16" 
       ],
       "4" => [
-        "- 16A 16 + 16C - 16"
+        " #{"-" * (rand(3) + 1)} 16A 16 + 16C - 16"
       ],
       "3" => [
-        "- 16A 16A + 16C",
+        " #{"-" * (rand(3) + 1)} 16A 16A + 16C",
       ],
       "5" => [
-        "- 16A 16 16A 16 16",
+        " #{"-" * (rand(3) + 1)} 16A 16 16A 16 16",
       ],
       "6" => [
-        "- 16A 16A + 16C - 16A 16A + 16C"
+        " #{"-" * (rand(3) + 1)} 16A 16A + 16C - 16A 16A + 16C"
       ],
       "7" => [
-        "- 16A 16 16A 16 + 16C - 16 16",
+        " #{"-" * (rand(3) + 1)} 16A 16 16A 16 + 16C - 16 16",
       ],
       "8" => [
         "16A 16C 16C 16C 16C 16C 16C 16C"
       ],
       "9" => [
-        "- 16A 16 16 16A 16 16 16A 16A 16A",
+        " #{"-" * (rand(3) + 1)} 16A 16 16 16A 16 16 16A 16A 16A",
 
       ]
     }
@@ -289,25 +289,29 @@ class BloopApi
   end
 
   def rhythms
+    octave_shifts = [
+      "-",
+      "-",
+      "-",
+      "-"
+    ]
     # rhythm phrases
     [
-      " - 8B 8 + 8A - 8 8B 8 + 8A - 8 8B 8 + 8A - 8 8B 8 + 8A - 8"
+      " #{octave_shifts.pop} 8B 8 + 8A #{octave_shifts.pop} 8 8B 8 + 8A #{octave_shifts.pop} 8 8B 8 + 8A #{octave_shifts.pop} 8 8B 8 + 8A #{octave_shifts.pop} 8"
     ]
   end
 
   def melodies
-    # melody phrases
+    octave_shifts = [
+      "-",
+      "-",
+      "-",
+      "-"
+    ]    
+    # rhythm phrases
     [
-      " - 8B 8 + 8A -  8 8B 8 + 8A - 8 8B 8 + 8A - 8 8B 8 + 8A - 8"
-      # " - - - 16F# 16B 16E 16C#",
-      # "- - 16D 16D - 16A# - 16C",
-
-      # "D# 4 2 D# 4 2 D# 4 2 D# 4 2",
-      # "1 1 1 1 D# D# D# D# ",
-      # "1D# 1F# 1D# 1F#",
-      # "B C F# 16 D",
-      # " C D D# B"
-    ]
+      " #{octave_shifts.pop} 8B 8 + 8A #{octave_shifts.pop} 8 8B 8 + 8A #{octave_shifts.pop} 8 8B 8 + 8A #{octave_shifts.pop} 8 8B 8 + 8A #{octave_shifts.pop} 8"
+    ]  
   end
 
   def bass_tone
