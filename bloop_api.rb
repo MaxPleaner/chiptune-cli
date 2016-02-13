@@ -2,6 +2,8 @@ require 'bloops' # the bloops o' phone
 require 'active_support/inflector'
 require 'byebug'
 
+BASE_TEMPO = 90
+
 class OddTimePhrase 
   attr_accessor :odd_time_sequence, :min, :max
   def self.random
@@ -47,7 +49,7 @@ class BloopApi
     # create a Bloop instance
     # options: tempo
     options = {
-      tempo: 120,
+      tempo: BASE_TEMPO,
     }.merge(options.reject { |k, v| v.nil?})
     @bloops = Bloops.new
     @bloops.tempo = options[:tempo]
@@ -57,28 +59,28 @@ class BloopApi
     num_beats = num_beats.to_s
     riffs = {
       "2" => [
-       "16A 16C" 
+       "- - 16A 16" 
       ],
       "4" => [
-        "16A 16C 16C 16C"
+        "- - 16A 16 + 16C - 16"
       ],
       "3" => [
-        "16A 16C 16C",
+        "- - 16A 16A + 16C",
       ],
       "5" => [
-        "16A 16C 16C 16C 16C",
+        "- - 16A 16 16A 16 16",
       ],
       "6" => [
-        "16A 16C 16C 16C 16C 16C"
+        "- - 16A 16A + 16C - 16A 16A + 16C"
       ],
       "7" => [
-        "16A 16C 16C 16C 16C 16C 16C",
+        "- - 16A 16 16A 16 + 16C - 16 16",
       ],
       "8" => [
         "16A 16C 16C 16C 16C 16C 16C 16C"
       ],
       "9" => [
-        "16A 16C 16C 16C 16C 16C 16C 16C 16C",
+        "- - 16A 16 16 16A 16 16 16A 16A 16A",
 
       ]
     }
@@ -91,28 +93,29 @@ class BloopApi
     num_beats = num_beats.to_s
     riffs = {
       "2" => [
-       "-- 16A# 16B#" 
+       "- 16A 16" 
       ],
       "4" => [
-        "-- 16A# 16B# 16C# 16D#"
+        "- 16A 16 + 16C - 16"
       ],
       "3" => [
-        "-- 16A# 16B# 16C#",
+        "- 16A 16A + 16C",
       ],
       "5" => [
-        "-- 16A# 16B# 16C# 16D# 16F#",
+        "- 16A 16 16A 16 16",
       ],
       "6" => [
-        "-- 16A# 16B# 16C# 16D# 16F# + 16A#"
+        "- 16A 16A + 16C - 16A 16A + 16C"
       ],
       "7" => [
-        "-- 16A# 16B# 16C# 16D# 16F# + 16A# 16B#",
+        "- 16A 16 16A 16 + 16C - 16 16",
       ],
       "8" => [
-        "-- 16A# 16B# 16C# 16D# 16F# + 16A# 16B# 16C#"
+        "16A 16C 16C 16C 16C 16C 16C 16C"
       ],
       "9" => [
-        "-- 16A# 16B# 16C# 16D# 16F# + 16A# 16B# 16C# 16D#",
+        "- 16A 16 16 16A 16 16 16A 16A 16A",
+
       ]
     }
     (return mixed ? riffs[num_beats].sample : riffs[num_beats][idx || 0]) rescue byebug
@@ -167,8 +170,7 @@ class BloopApi
       puts "#{"odd time sequence".blue}: #{sequence.odd_time_sequence.join(", ").green}"
       (options[:repetitions] || 4).times do
         sequence.odd_time_sequence.each do |beats_count|
-          bloop = BloopApi.new(tempo: tempo || 500)
-          puts tempo || 500
+          bloop = BloopApi.new(tempo: tempo || BASE_TEMPO)
           bloop.bloops.tune(bloop.bass_drum, BloopApi.odd_rhythm_riff(beats_count)) unless solo == :melody
           bloop.bloops.tune(bloop.bass_tone, BloopApi.odd_melody_riff(beats_count)) unless solo == :rhythm
           bloop.bloops.play
@@ -211,8 +213,8 @@ class BloopApi
     # a random number in the bounds is used for each phrase
     options = {
       length: 4,
-      intensity_max: 20,
-      intensity_min: 10,
+      intensity_max: 1,
+      intensity_min: 1,
     }.merge(options)
     options[:length].times {
       self.new.generate_riff(
@@ -289,19 +291,22 @@ class BloopApi
   def rhythms
     # rhythm phrases
     [
-    "A A C A A A C A A A C A A A C A ",
-    "A 4 4 A 4 4 A 4 4 A 4 4 A 4 4 A"
+      " - 8B 8 + 8A - 8 8B 8 + 8A - 8 8B 8 + 8A - 8 8B 8 + 8A - 8"
     ]
   end
 
   def melodies
     # melody phrases
     [
-      "A 4 2 A 4 2 A 4 2 A 4 2",
-      "1 1 1 1 A A A A ",
-      "1A 1F# 1A 1F#",
-      "B C F# 16 D",
-      " C D A B"
+      " - 8B 8 + 8A -  8 8B 8 + 8A - 8 8B 8 + 8A - 8 8B 8 + 8A - 8"
+      # " - - - 16F# 16B 16E 16C#",
+      # "- - 16D 16D - 16A# - 16C",
+
+      # "D# 4 2 D# 4 2 D# 4 2 D# 4 2",
+      # "1 1 1 1 D# D# D# D# ",
+      # "1D# 1F# 1D# 1F#",
+      # "B C F# 16 D",
+      # " C D D# B"
     ]
   end
 
