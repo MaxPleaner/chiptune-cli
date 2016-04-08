@@ -34,6 +34,7 @@ High likelihood of alsa/pulseaudio errors, especially when you playing a lot of 
     1. tempo (i.e. BPM), defaults to 90,
     2. beat_count (i.e. [4,17] or [3, 123]), the two beat counts which define the polythythm). Defaults to a random pair 
     3. repetitions (i.e. total length / phrase length), defaults to 2
+  - **bonus** shows some rudimentary visualizer art in the console
 
 2. `polyrhythm`
   - calls the `odd_time` and `play_chiptune` commands in parallel.
