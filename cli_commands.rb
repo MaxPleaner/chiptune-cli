@@ -10,10 +10,10 @@ class Commands
   end
 
   def odd_time(options={})
-    # options: tempo, beat_count, repetitions
+    # options: tempo, beat_counts, repetitions
     BloopApi.odd_time(
       tempo: options[:tempo] || BASE_TEMPO,
-      beat_count: options[:beat_count],
+      beat_counts: options[:beat_counts],
       repetitions: options[:repetitions] || 2,
       # solo: :rhythm,
     )
@@ -25,12 +25,12 @@ class Commands
     end
   end
 
-  def play_chiptune
+  def play_chiptune(options={})
     BloopApi.flow(
-      tempo: BASE_TEMPO,
-      length: 2,
-      intensity_min: 1,
-      intensity_max: 1,
+      tempo: options[:tempo] || 240,
+      length: options[:length] || 8,
+      intensity_min: options[:intensity_min] || 2,
+      intensity_max: options[:intensity_max] || 3,
     )
   end
   def parallel_chiptune(count)
@@ -44,8 +44,8 @@ class Commands
   def sick_beat(count=4)
     BloopApi.sick_beat(
       length: count, 
-      intensity_min: 8,
-      intensity_max: 8
+      intensity_min: 6,
+      intensity_max: 12
     )
   end
   def parallel_sick_beat(count)

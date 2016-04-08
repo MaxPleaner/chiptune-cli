@@ -49,7 +49,7 @@ class BloopApi
     # create a Bloop instance
     # options: tempo
     options = {
-      tempo: BASE_TEMPO,
+      tempo: options[:tempo] || BASE_TEMPO,
     }.merge(options.reject { |k, v| v.nil?})
     @bloops = Bloops.new
     @bloops.tempo = options[:tempo]
@@ -58,14 +58,20 @@ class BloopApi
   def self.odd_rhythm_riff(num_beats, mixed=false, idx=nil)
     num_beats = num_beats.to_s
     riffs = {
+      "0" => [
+        ""
+      ],
+      "1" => [
+        "16A"
+        ],
       "2" => [
        " #{"-" * (rand(3) + 1)} 16A 16" 
       ],
-      "4" => [
-        " #{"-" * (rand(3) + 1)} 16A 16 + 16C - 16"
-      ],
       "3" => [
         " #{"-" * (rand(3) + 1)} 16A 16A + 16C",
+      ],
+      "4" => [
+        " #{"-" * (rand(3) + 1)} 16A 16 + 16C - 16"
       ],
       "5" => [
         " #{"-" * (rand(3) + 1)} 16A 16 16A 16 16",
@@ -86,12 +92,21 @@ class BloopApi
     }
     begin
     return mixed ? riffs[num_beats].sample : riffs[num_beats][idx || 0]
-  rescue StandardError; byebug; end
+  rescue StandardError => e; byebug; end
   end
 
   def self.odd_melody_riff(num_beats, mixed=false, idx=nil)
     num_beats = num_beats.to_s
     riffs = {
+      "0" => [
+        ""
+      ],
+      "1" => [
+        "16A"
+        ],
+      "2" => [
+       " #{"-" * (rand(3) + 1)} 16A 16" 
+      ],      
       "2" => [
        " #{"-" * (rand(3) + 1)} 16A 16" 
       ],
@@ -174,7 +189,10 @@ class BloopApi
           bloop.bloops.tune(bloop.bass_drum, BloopApi.odd_rhythm_riff(beats_count)) unless solo == :melody
           bloop.bloops.tune(bloop.bass_tone, BloopApi.odd_melody_riff(beats_count)) unless solo == :rhythm
           bloop.bloops.play
-          puts "playing #{beats_count}"
+
+          @@visualizer ||= Visualizer.new
+          @@visualizer.change(beats_count)
+          @@visualizer.print
           sleep 0.1 while !bloop.bloops.stopped?
         end
       end 
@@ -189,6 +207,24 @@ class BloopApi
       #       bloop.bloops.play
       #       sleep 0.1 while !bloop.bloops.stopped?
       #   }
+  end
+
+  class Visualizer
+    def initialize(len=27)
+      @len = len
+      @data = []
+    end
+    def change(n)
+      if @data.length > @len
+        @data.shift
+      end
+      colors = [:yellow_on_black, :yellow_on_red]
+      @data << n.times.map { "[]".send(colors.sample) }
+    end
+    def print
+      puts @data.join
+    end
+
   end
     
             #   Parallel.each([1,2]) do |idx|
@@ -217,7 +253,7 @@ class BloopApi
       intensity_min: 1,
     }.merge(options)
     options[:length].times {
-      self.new.generate_riff(
+      self.new(tempo: options[:tempo]).generate_riff(
         intensity: [rand(options[:intensity_max]), options[:intensity_min]].max
       )
     }
